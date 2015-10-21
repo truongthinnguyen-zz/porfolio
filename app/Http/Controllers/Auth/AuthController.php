@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -31,6 +35,35 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    function postLogin(){
+        $data = Input::all();
+        $rules = array(
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        );
+        $validator = Validator::make($data, $rules);
+
+        if($validator->fails()){
+            return Redirect::to('/auth/login')->withInput(Input::except('password'))->withErrors($validator);
+        }
+        else{
+            $userdata = array(
+                'email' => Input::get('email'),
+                'password' => Input::get('password')
+            );
+
+            if(Auth::validate($userdata)){
+                if(Auth::attempt($userdata)){
+                    return Redirect::intended('/');
+                }
+            }
+            else{
+                Session::flash('error', 'Something is wrong');
+                return Redirect::to('/auth/login');
+            }
+        }
     }
 
     /**
