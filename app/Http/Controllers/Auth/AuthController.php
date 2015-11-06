@@ -27,6 +27,8 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    protected $redirectTo = '/';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -46,6 +48,7 @@ class AuthController extends Controller
         $validator = Validator::make($data, $rules);
 
         if($validator->fails()){
+            die($validator);
             return Redirect::to('/auth/login')->withInput(Input::except('password'))->withErrors($validator);
         }
         else{

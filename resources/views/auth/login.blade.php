@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.basic')
 
 @section('content')
     <div class="container-fluid">
@@ -18,19 +18,14 @@
                             </div>
                         @endif
 
+                        @if(Session::has('error'))
+                            <div class="alert alert-danger">
+                                <p>{{ Session::get('error') }}</p>
+                            </div>
+                        @endif
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            @if(Session::has('error'))
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label"></label>
-                                    <div class="col-md-6">
-                                        <div class="alert-box success">
-                                            <p>{{ Session::get('error') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
                             <div class="form-group">
                                 <label class="col-md-4 control-label">E-Mail Address</label>
                                 <div class="col-md-6">
