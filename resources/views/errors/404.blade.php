@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="content">
-        <div class="title">Be right back.</div>
+        <div class="title">Page not found.</div>
     </div>
 @endsection

@@ -11,7 +11,7 @@
                     <div class="site-heading">
                         <h1>Thin Nguyen's Blog</h1>
                         <hr class="small">
-                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                        <span class="subheading">Code Smart Not Hard</span>
                     </div>
                 </div>
             </div>
@@ -22,57 +22,24 @@
 @section('content')
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Man must explore, and this is exploration at its greatest
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Problems look mighty small from 150 miles up
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                    </h2>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Science has not yet mastered prophecy
-                    </h2>
-                    <h3 class="post-subtitle">
-                        We predict too much for the next year and yet far too little for the next ten.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Failure is not an option
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-            </div>
-            <hr>
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
-                </li>
-            </ul>
+            <h5>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</h5>
+            @foreach($articles as $article)
+                <div class="post-preview">
+                    <a href="/article/{{ $article->slug }}">
+                        <h2 class="post-title">
+                            {{ $article->title }}
+                        </h2>
+                    </a>
+                    <p class="post-subtitle">
+                        {{ str_limit($article->content, $limit = 150, $end = '...') }}
+                    </p>
+                    <p class="post-meta">Posted by <a href="#">Thin Nguyen</a> on {{ $article->published_at->format('M jS Y g:ia') }}</p>
+                </div>
+                <hr>
+            @endforeach
+
+            {!! $articles->render() !!}
+
         </div>
     </div>
 @endsection
