@@ -1,4 +1,7 @@
-@extends('layouts.basic')
+@extends('layouts.app')
+
+@section('title', 'Register')
+@section('bodyClass', 'no-intro')
 
 @section('content')
     <div class="container-fluid">

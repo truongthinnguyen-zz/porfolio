@@ -7,7 +7,7 @@
 // Contact Form Scripts
 
 $(function() {
-    if($("body").hasClass("contact-page")){
+    if($("#contactForm").length){
         $("input,textarea").jqBootstrapValidation({
             preventSubmit: true,
             submitError: function($form, event, errors) {
@@ -62,7 +62,7 @@ $(function() {
             },
             filter: function() {
                 return $(this).is(":visible");
-            },
+            }
         });
     }
 

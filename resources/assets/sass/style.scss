@@ -83,6 +83,47 @@ hr.small {
         color: rgba(255, 255, 255, 0.8);
       }
     }
+
+    // Dropdown menu items
+    .navbar-nav {
+      // Remove background color from open dropdown
+      > .open > a {
+        &,
+        &:hover,
+        &:focus {
+          color: #404040;
+        }
+      }
+
+      .dropdown {
+        &.open{
+          .dropdown-menu {
+            width: 100%;
+            border: none;
+            background-color: #e7e7e7;
+
+            li > a {
+              &,
+              &:hover,
+              &:focus {
+                color: #404040;
+                background-color: transparent;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.no-intro {
+  nav.navbar {
+      background-color: #404040;
+  }
+
+  #container {
+    margin-top: 80px;
   }
 }
 
