@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Article;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ArticlesController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.article.index');
     }
 
     /**
@@ -47,11 +45,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug, Request $request)
+    public function show($id)
     {
-        $article = Article::whereSlug($slug)->firstOrFail();
-
-        return view('article.article', compact('article'));
+        //
     }
 
     /**
