@@ -28,6 +28,7 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     protected $redirectTo = '/';
+    protected $redirectAfterLogout = '/auth/login';
 
     /**
      * Create a new authentication controller instance.
@@ -46,10 +47,8 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         );
         $validator = Validator::make($data, $rules);
-
         if($validator->fails()){
-            die($validator);
-            return Redirect::to('/auth/login')->withInput(Input::except('password'))->withErrors($validator);
+            return Redirect::to('/auth/login')->withErrors($validator);
         }
         else{
             $userdata = array(
@@ -63,7 +62,7 @@ class AuthController extends Controller
                 }
             }
             else{
-                Session::flash('error', 'Something is wrong');
+                Session::flash('error', 'Email address or password is incorrect. Please try again.');
                 return Redirect::to('/auth/login');
             }
         }

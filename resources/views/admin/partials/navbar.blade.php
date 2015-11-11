@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
     @if (Auth::check())
         <li @if (Request::is('admin/article*')) class="active" @endif>
-            <a href="/admin/post">Posts</a>
+            <a href="/admin/article">Articles</a>
         </li>
         <li @if (Request::is('admin/tag*')) class="active" @endif>
             <a href="/admin/tag">Tags</a>
