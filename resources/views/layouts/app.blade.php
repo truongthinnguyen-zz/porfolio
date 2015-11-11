@@ -9,6 +9,7 @@
     <title>Thin Nguyen's Blog - @yield('title')</title>
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -117,8 +118,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="{{ asset('/js/vendor.js') }}"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
