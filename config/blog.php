@@ -8,5 +8,9 @@
 
 return [
     'title' => 'My Blog',
-    'articles_per_page' => 5
+    'articles_per_page' => 5,
+    'upload' => [
+        'storage' => 'local',
+        'webpath' => 'uploads'
+    ]
 ];

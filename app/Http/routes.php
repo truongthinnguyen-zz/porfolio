@@ -28,6 +28,11 @@ Route::group([
     resource('admin/article', 'ArticleController');
     resource('admin/tag', 'TagController');
     get('admin/upload', 'UploadController@index');
+
+    post('admin/upload/file','UploadController@uploadFile');
+    delete('admin/upload/file','UploadController@deleteFile');
+    post('admin/upload/folder','UploadController@createFolder');
+    delete('admin/upload/folder','UploadController@deleteFolder');
 });
 
 // Authentication routes

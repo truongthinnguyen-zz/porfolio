@@ -9,6 +9,7 @@
     <title>{{ config('blog.title') }} Admin</title>
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->

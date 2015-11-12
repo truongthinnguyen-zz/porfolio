@@ -12,20 +12,30 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+    mix.copy('bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js');
+    mix.copy('bower_components/bootstrap/dist/js/bootstrap.js', 'resources/assets/js/bootstrap.js');
+    mix.copy('bower_components/datatables/media/js/jquery.dataTables.js', 'resources/assets/js/jquery.dataTables.js');
+    mix.copy('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js', 'resources/assets/js/dataTables.bootstrap.js');
+
+    mix.copy('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css', 'public/css/dataTables.bootstrap.css');
+    mix.copy('bower_components/bootstrap/fonts/', 'public/fonts/bootstrap/');
+
     mix.sass('app.scss');
     mix.sass('admin.scss');
     mix.sass('style.scss');
 
-    mix.copy('bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js');
-    mix.copy('bower_components/bootstrap/dist/js/bootstrap.js', 'resources/assets/js/bootstrap.js');
-    mix.copy('bower_components/datatables/media/jquery.dataTables.js', 'resources/assets/js/jquery.dataTables.js');
-    mix.copy('bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js');
-
     mix.scripts([
         'jquery.js',
-        'bootstrap.js'
+        'bootstrap.js',
+        'jquery.dataTables.js',
+        'dataTables.bootstrap.js'
     ], 'public/js/vendor.js');
 
-    mix.copy('resources/assets/js/admin.js', 'public/js/admin.js');
-    mix.copy('resources/assets/js/scripts.js', 'public/js/scripts.js');
+    mix.scripts([
+        'admin.js'
+    ], 'public/js/admin.js');
+
+    mix.scripts([
+        'scripts.js'
+    ], 'public/js/scripts.js');
 });
