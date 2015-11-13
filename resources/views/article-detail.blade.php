@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Homepage')
+@section('title', $article->title)
 
 @section('introHeader')
     <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
@@ -15,7 +15,6 @@
             </div>
         </div>
     </header>
-
 @endsection
 
 @section('content')

@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->timestamps();
-            $table->boolean('is_published');
+            $table->boolean('is_published')->default(true);
             $table->timestamp('published_at')->index();
         });
     }

@@ -25,8 +25,8 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => 'auth'
 ], function(){
-    resource('admin/article', 'ArticleController');
-    resource('admin/tag', 'TagController');
+    resource('admin/article', 'ArticleController', ['except' => 'show']);
+    resource('admin/tag', 'TagController', ['except' => 'show']);
     get('admin/upload', 'UploadController@index');
 
     post('admin/upload/file','UploadController@uploadFile');

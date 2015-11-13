@@ -1030,4 +1030,7 @@ jQuery(document).ready(function($) {
                 this.previousTop = currentTop;
             });
     }
+
+    // Initialize tooltips
+    $('[data-toggle="tooltip"]').tooltip();
 });

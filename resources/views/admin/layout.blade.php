@@ -10,6 +10,7 @@
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+    @yield('styles')
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->

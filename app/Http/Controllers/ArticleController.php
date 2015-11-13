@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Jobs\BlogIndexData;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use phpDocumentor\Reflection\DocBlock\Tag;
 
 class ArticleController extends Controller
 {
@@ -15,13 +17,21 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $tag = $request->get('tag');
+        $data = $this->dispatch(new BlogIndexData($tag));
+        $layout = $tag ? Tag::layout($tag) : 'blog.layouts.index';
+
+        return view($layout, $data);
+
+        /*
         $articles = Article::where('published_at', '<=', Carbon::now())
             ->orderby('published_at', 'desc')
             ->paginate(config('blog.articles_per_page'));
 
         return view('articles', compact('articles'));
+        */
     }
 
     /**
@@ -32,8 +42,13 @@ class ArticleController extends Controller
      */
     public function show($slug, Request $request)
     {
-        $article = Article::whereSlug($slug)->firstOrFail();
+        $article = Article::with('tags')->whereSlug($slug)->firstOrFail();
+        $tag = $request->get('tag');
 
-        return view('article-detail', compact('article'));
+        if($tag){
+            $tag = Tag::whereTag($tag)->firstOrFail();
+        }
+
+        return view($article->layout, compact('article', 'tag'));
     }
 }
