@@ -6,12 +6,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>{{ $article->title }}</h1>
-                        <h2 class="subheading">{{ $article->subtitle }}</h2>
-                        <span class="meta">Posted by <a href="#">Thin Nguyen</a> on {{ $article->published_at->format('M jS Y g:ia') }}</span>
-                        @if ($article->tags->count())
-                            {!! join(', ', $article->tagLinks()) !!}
-                        @endif
+                        <h1>{{ $title }}</h1>
+                        <hr class="small">
+                        <h2 class="subheading">{{ $subtitle }}</h2>
                     </div>
                 </div>
             </div>

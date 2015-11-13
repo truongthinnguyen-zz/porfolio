@@ -7,6 +7,7 @@
 // Contact Form Scripts
 
 $(function() {
+    /*
     if($("#contactForm").length){
         $("input,textarea").jqBootstrapValidation({
             preventSubmit: true,
@@ -26,7 +27,7 @@ $(function() {
                     firstName = name.split(' ').slice(0, -1).join(' ');
                 }
                 $.ajax({
-                    url: "././mail/contact_me.php",
+                    url: "/contact",
                     type: "POST",
                     data: {
                         name: name,
@@ -57,7 +58,7 @@ $(function() {
                         $('#success > .alert-danger').append('</div>');
                         //clear all fields
                         $('#contactForm').trigger("reset");
-                    },
+                    }
                 })
             },
             filter: function() {
@@ -65,7 +66,7 @@ $(function() {
             }
         });
     }
-
+    */
     $("a[data-toggle=\"tab\"]").click(function(e) {
         e.preventDefault();
         $(this).tab("show");

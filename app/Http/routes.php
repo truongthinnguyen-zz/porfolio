@@ -12,8 +12,12 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/articles', 'ArticleController@index');
+Route::get('/article', 'ArticleController@index');
 Route::get('/article/{slug}', 'ArticleController@show');
+
+// Contact
+Route::get('/contact', 'ContactController@index');
+Route::post('/contact', 'ContactController@sendContactInfo');
 
 // Admin area
 
