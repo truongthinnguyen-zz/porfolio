@@ -58,6 +58,11 @@ class AuthController extends Controller
 
             if(Auth::validate($userdata)){
                 if(Auth::attempt($userdata)){
+
+                    if(Auth::user()->hasRole('admin')){
+                        return Redirect::intended('/admin');
+                    }
+
                     return Redirect::intended('/');
                 }
             }

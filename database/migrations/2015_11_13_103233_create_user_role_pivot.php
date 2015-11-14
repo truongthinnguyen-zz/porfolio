@@ -12,9 +12,10 @@ class CreateUserRolePivot extends Migration
      */
     public function up()
     {
-        Schema::table('user_role_pivot', function (Blueprint $table) {
+        Schema::create('user_role_pivot', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('role_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class CreateUserRolePivot extends Migration
      */
     public function down()
     {
-        Schema::table('user_role_pivot', function (Blueprint $table) {
-            Schema::drop('users_roles');
-        });
+        Schema::drop('user_role_pivot');
     }
 }

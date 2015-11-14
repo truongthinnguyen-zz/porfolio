@@ -44,6 +44,7 @@ elixir(function(mix) {
 
         .copy('bower_components/bootstrap/fonts/', 'public/fonts/bootstrap/')
         .copy('resources/assets/img/', 'public/img')
+        .copy('resources/assets/js/tinymce', 'public/js/tinymce')
         .sass('app.scss')
         .sass('admin.scss')
         .sass('style.scss')

@@ -42,8 +42,14 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsToMany('App\Role', 'user_role_pivot');
     }
 
-    public function hasRole($check)
+    public function isAdmin()
     {
-        return in_array($check, array_get($this->roles->toArray(), 'name'));
+        $roles = $this->roles->lists('name')->all();
+        return in_array($roles, 'admin');
+    }
+
+    public function hasRole($roleName)
+    {
+        return in_array($roleName, $this->roles->lists('name')->all());
     }
 }

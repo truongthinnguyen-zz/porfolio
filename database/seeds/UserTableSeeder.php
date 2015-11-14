@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Role;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -12,24 +13,34 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        /*
-         * role: 1 => admin
-         * role: 2 => user
-         */
+        $roles = Role::lists('id')->all();
 
         DB::table('users')->delete();
         User::create(array(
             'name' => 'Thin Nguyen Truong',
             'email' => 'truongthinnguyen@gmail.com',
-            'password' => Hash::make('123456'),
-            'role' => 1
+            'password' => Hash::make('123456')
         ));
 
         User::create(array(
-            'name' => 'Ratione Deserunt',
-            'email' => 'ratione_deserunt@gmail.com',
-            'password' => Hash::make('123456'),
-            'role' => 2
+            'name' => 'Tester',
+            'email' => 'test@gmail.com',
+            'password' => Hash::make('123456')
         ));
+
+        $users = User::all();
+        foreach($users as $user){
+            if($user->email === 'truongthinnguyen@gmail.com'){
+                DB::table('user_role_pivot')->insert(array(
+                    array('user_id' => $user->id, 'role_id' => $roles[0])
+                ));
+            }
+            else{
+                DB::table('user_role_pivot')->insert(array(
+                    array('user_id' => $user->id, 'role_id' => $roles[1])
+                ));
+            }
+
+        }
     }
 }

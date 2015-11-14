@@ -27,7 +27,7 @@ Route::get('/admin', function(){
 
 Route::group([
     'namespace' => 'Admin',
-    'middleware' => 'auth'
+    'middleware' => ['auth', 'roles']
 ], function(){
     resource('admin/article', 'ArticleController', ['except' => 'show']);
     resource('admin/tag', 'TagController', ['except' => 'show']);
