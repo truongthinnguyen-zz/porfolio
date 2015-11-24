@@ -3,6 +3,7 @@
 // Front area
 
 Route::get('/', 'HomeController@index');
+Route::get('/store', 'HomeController@store');
 
 Route::get('/about', function () {
     return view('about');

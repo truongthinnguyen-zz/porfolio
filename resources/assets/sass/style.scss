@@ -64,6 +64,14 @@ hr.small {
   }
 }
 
+.navbar-nav {
+  > li {
+    &.active {
+      background-color: lightgray;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .navbar-custom {
     background: transparent;

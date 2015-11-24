@@ -4,6 +4,20 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+var app = angular.module('blog', []);
+
+/*
+ app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('{[');
+    $interpolateProvider.endSymbol(']}');
+});
+*/
+
+/* the blog page controller*/
+app.controller('BlogController', function($scope) {
+    $scope.message = 'Hello World';
+});
+
 // Contact Form Scripts
 
 $(function() {

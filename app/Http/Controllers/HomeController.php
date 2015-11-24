@@ -23,4 +23,8 @@ class HomeController extends Controller
 
         return view('home', compact('articles'));
     }
+
+    public function store(){
+        return view('store');
+    }
 }

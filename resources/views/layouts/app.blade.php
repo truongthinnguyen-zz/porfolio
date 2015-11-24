@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="blog">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +24,7 @@
     <![endif]-->
 </head>
 <body class="@yield('bodyClass')">
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -38,10 +39,15 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
+            {{ @define($arrLink = ["", "store", "about", "contact", "auth/login", "auth/register"]) }}
+
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/store">Store</a>
                     </li>
                     <li>
                         <a href="/about">About</a>
