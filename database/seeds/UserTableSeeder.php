@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
     {
         $roles = Role::lists('id')->all();
 
-        DB::table('users')->delete();
+        User::truncate();
         User::create(array(
             'name' => 'Thin Nguyen Truong',
             'email' => 'truongthinnguyen@gmail.com',
@@ -29,6 +29,7 @@ class UserTableSeeder extends Seeder
         ));
 
         $users = User::all();
+
         foreach($users as $user){
             if($user->email === 'truongthinnguyen@gmail.com'){
                 DB::table('user_role_pivot')->insert(array(

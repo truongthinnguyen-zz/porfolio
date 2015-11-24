@@ -28,10 +28,11 @@ elixir.extend('clean', function (dirs) {
 
 elixir(function(mix) {
     mix.clean()
-        .copy('bower_components/jquery/dist/jquery.js', 'resources/assets/js/jquery.js')
-        .copy('bower_components/bootstrap/dist/js/bootstrap.js', 'resources/assets/js/bootstrap.js')
-        .copy('bower_components/datatables/media/js/jquery.dataTables.js', 'resources/assets/js/jquery.dataTables.js')
-        .copy('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.js', 'resources/assets/js/dataTables.bootstrap.js')
+        .copy('bower_components/jquery/dist/jquery.min.js', 'resources/assets/js/jquery/jquery.min.js')
+        .copy('bower_components/bootstrap/dist/js/bootstrap.min.js', 'resources/assets/js/bootstrap/bootstrap.min.js')
+        .copy('bower_components/angular/angular.min.js', 'resources/assets/js/angular/angular.min.js')
+        .copy('bower_components/datatables/media/js/jquery.dataTables.min.js', 'resources/assets/js/datatable/jquery.datatables.min.js')
+        .copy('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js', 'resources/assets/js/datatable/datatables.bootstrap.min.js')
         .copy('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css', 'public/css/dataTables.bootstrap.css')
 
         .copy('bower_components/pickadate/lib/compressed/picker.js', 'resources/assets/js/pickadate/picker.js')
@@ -49,10 +50,11 @@ elixir(function(mix) {
         .sass('admin.scss')
         .sass('style.scss')
         .scripts([
-            'jquery.js',
-            'bootstrap.js',
-            'jquery.dataTables.js',
-            'dataTables.bootstrap.js',
+            'jquery/jquery.min.js',
+            'angular/angular.min.js',
+            'bootstrap/bootstrap.min.js',
+            'datatable/jquery.datatables.min.js',
+            'datatable/datatables.bootstrap.min.js',
             'pickadate/picker.js',
             'pickadate/picker.date.js',
             'pickadate/picker.time.js',
